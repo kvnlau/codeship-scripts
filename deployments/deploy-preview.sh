@@ -14,8 +14,8 @@ STAGING_BRANCH=${STAGING_BRANCH:?'You need to configure the STAGING_BRANCH envir
 
 set -e
 
-cd ~/src/bitbucket.org/fairfax/deploy-preview
-git clone {REMOTE_REPOSITORY}
+git clone ${REMOTE_REPOSITORY} ~/src/deploy-preview
+cd ~/src/deploy-preview
 git checkout ${STAGING_BRANCH}
 git checkout "${CI_BRANCH}"
 # a list of commits that are not yet cherry picked onto staging branch
