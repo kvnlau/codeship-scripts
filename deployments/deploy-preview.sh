@@ -23,9 +23,9 @@ preview_diff=$(git rev-list --reverse --right-only --cherry-pick "${STAGING_BRAN
 # a list of commits that are not yet merged into master
 master_diff=$(git rev-list --reverse --right-only --no-merges master...HEAD --author="${CI_COMMITTER_EMAIL}")
 echo 'Preview_diff: '
-echo preview_diff
+echo ${preview_diff}
 echo 'Master_diff: '
-echo master_diff
+echo ${master_diff}
 for item1 in $preview_diff; do
     for item2 in $master_diff; do
         if [[ $item1 = $item2 ]]; then
