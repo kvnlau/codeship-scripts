@@ -36,6 +36,10 @@ done
 echo 'Commits to cherry pick: '
 echo $result
 
+if [ -z "$result" ]; then
+    exit 0
+fi
+
 git config --global user.email "landmark@fairfaxmedia.com.au"
 git config --global user.name "FFX UI Engineering Bot"
 git config --global push.default simple
