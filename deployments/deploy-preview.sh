@@ -19,9 +19,9 @@ cd ~/src/deploy-preview
 git checkout ${STAGING_BRANCH}
 git checkout "${CI_BRANCH}"
 # a list of commits that are not yet cherry picked onto staging branch
-preview_diff=$(git rev-list --reverse --right-only --cherry-pick "${STAGING_BRANCH}"...HEAD --author="${CI_COMMITTER_EMAIL}")
+preview_diff=$(git rev-list --reverse --right-only --cherry-pick "${STAGING_BRANCH}"...HEAD)
 # a list of commits that are not yet merged into master
-master_diff=$(git rev-list --reverse --right-only --no-merges master...HEAD --author="${CI_COMMITTER_EMAIL}")
+master_diff=$(git rev-list --reverse --right-only --no-merges master...HEAD)
 echo 'Preview_diff: '
 echo ${preview_diff}
 echo 'Master_diff: '
