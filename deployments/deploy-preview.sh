@@ -29,6 +29,7 @@ for item1 in $preview_diff; do
         fi
     done
 done
+echo 'Commits to cherry pick: '
 echo $result
 
 git config --global user.email "landmark@fairfaxmedia.com.au"
