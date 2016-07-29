@@ -8,25 +8,25 @@
 # * STAGING_BRANCH, e.g. "preview"
 #
 # Include in your builds via
-# \curl -sSL https://raw.githubusercontent.com/consolelog/deploy-preview/master/deployments/deploy-preview.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/kvnlau/codeship-scripts/master/deploy/deploy-staging.sh | bash -s
 REMOTE_REPOSITORY=${REMOTE_REPOSITORY:?'You need to configure the REMOTE_REPOSITORY environment variable!'}
 STAGING_BRANCH=${STAGING_BRANCH:?'You need to configure the STAGING_BRANCH environment variable!'}
 
 set -e
 
-git clone ${REMOTE_REPOSITORY} ~/src/deploy-preview
-cd ~/src/deploy-preview
+git clone ${REMOTE_REPOSITORY} ~/src/deploy-staging
+cd ~/src/deploy-staging
 git checkout ${STAGING_BRANCH}
 git checkout "${CI_BRANCH}"
 # a list of commits that are not yet cherry picked onto staging branch
-preview_diff=$(git rev-list --reverse --right-only --no-merges --cherry-pick "${STAGING_BRANCH}"...HEAD)
+staging_diff=$(git rev-list --reverse --right-only --no-merges --cherry-pick "${STAGING_BRANCH}"...HEAD)
 # a list of commits that are not yet merged into master
 master_diff=$(git rev-list --reverse --right-only --no-merges master...HEAD)
-echo 'Preview_diff: '
-echo ${preview_diff}
+echo 'Staging_diff: '
+echo ${staging_diff}
 echo 'Master_diff: '
 echo ${master_diff}
-for item1 in $preview_diff; do
+for item1 in $staging_diff; do
     for item2 in $master_diff; do
         if [[ $item1 = $item2 ]]; then
             result=$result" "$item1
