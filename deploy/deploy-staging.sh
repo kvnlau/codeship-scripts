@@ -45,5 +45,5 @@ git config --global user.name "FFX UI Engineering Bot"
 git config --global push.default simple
 git checkout ${STAGING_BRANCH}
 git pull --rebase
-git cherry-pick -x --strategy=subtree --keep-redundant-commits $result
+git cherry-pick -x --strategy=ours --keep-redundant-commits $result
 git push
