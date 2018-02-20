@@ -105,6 +105,7 @@ if [[ "$DIST_HAS_UPDATE" = "1" ]]; then
 
     ## sites to be included for autobump
     declare -a arr=(
+        "ucms-css-afr"
         "ucms-css-mastheads"
         "ucms-css-executive-style"
         "ucms-css-essential-baby"
